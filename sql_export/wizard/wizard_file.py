@@ -44,7 +44,7 @@ class SqlFileWizard(models.TransientModel):
 
                 res['fields'].update(self.fields_get(toupdate_fields))
                 placeholder = eview.xpath(
-                    "//separator[@string='variables_placeholder']")[0]
+                    "//separator[@name='variables_placeholder']")[0]
                 placeholder.getparent().replace(
                     placeholder, group)
                 res['arch'] = etree.tostring(eview, pretty_print=True)
