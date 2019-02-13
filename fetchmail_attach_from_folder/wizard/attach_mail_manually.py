@@ -32,16 +32,16 @@ class attach_mail_manually(models.TransientModel):
     mail_ids = fields.One2many(
         'fetchmail.attach.mail.manually.mail', 'wizard_id', 'Emails')
 
-    def default_get(self, cr, uid, fields_list, context=None):
+    def default_get(self,  fields_list, context=None):
         if context is None:
             context = {}
 
         defaults = super(attach_mail_manually, self).default_get(
-            cr, uid, fields_list, context
+             fields_list, context
         )
 
         for folder in self.pool.get('fetchmail.server.folder').browse(
-                cr, uid,
+                
                 [context.get('default_folder_id')], context):
             defaults['mail_ids'] = []
             connection = folder.server_id.connect()
@@ -60,7 +60,7 @@ class attach_mail_manually(models.TransientModel):
                                   msgid, folder.path, folder.server_id.name)
                     continue
                 mail_message = self.pool.get('mail.thread').message_parse(
-                    cr, uid, msgdata[0][1],
+                     msgdata[0][1],
                     save_original=folder.server_id.original,
                     context=context
                 )
@@ -74,8 +74,8 @@ class attach_mail_manually(models.TransientModel):
 
         return defaults
 
-    def attach_mails(self, cr, uid, ids, context=None):
-        for this in self.browse(cr, uid, ids, context):
+    def attach_mails(self,  ids, context=None):
+        for this in self.browse( ids, context):
             for mail in this.mail_ids:
                 connection = this.folder_id.server_id.connect()
                 connection.select(this.folder_id.path)
@@ -86,7 +86,7 @@ class attach_mail_manually(models.TransientModel):
                     continue
 
                 mail_message = self.pool.get('mail.thread').message_parse(
-                    cr, uid, msgdata[0][1],
+                     msgdata[0][1],
                     save_original=this.folder_id.server_id.original,
                     context=context)
 

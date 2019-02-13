@@ -45,4 +45,4 @@ openerp.auth_from_http_basic_logout = function(openerp)
             return deferred;
         }
     });
-}
+};

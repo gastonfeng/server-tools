@@ -247,7 +247,7 @@ class AuditlogRule(models.Model):
             read_values = dict((d['id'], d) for d in result2)
             # Old API
             if args and isinstance(args[0], sql_db.Cursor):
-                cr, uid, ids = args[0], args[1], args[2]
+                 ids = args[0], args[1], args[2]
                 if isinstance(ids, (int, long)):
                     ids = [ids]
                 # If the call came from auditlog itself, skip logging:
@@ -256,7 +256,7 @@ class AuditlogRule(models.Model):
                 # 'ir.model.fields'... (no interest in logging such operations)
                 if kwargs.get('context', {}).get('auditlog_disabled'):
                     return result
-                env = api.Environment(cr, uid, {'auditlog_disabled': True})
+                env = api.Environment( {'auditlog_disabled': True})
                 rule_model = env['auditlog.rule']
                 rule_model.sudo().create_logs(
                     env.uid, self._name, ids,

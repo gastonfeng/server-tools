@@ -28,9 +28,9 @@ import logging
 class external_referential(models.Model):
     _inherit = 'external.referential'
 
-    def _get_environment_config_by_name(self, cr, uid, ids, field_names, arg, context):
+    def _get_environment_config_by_name(self,  ids, field_names, arg, context):
         values = {}
-        for referential in self.browse(cr, uid, ids, context):
+        for referential in self.browse( ids, context):
             values[referential.id] = {}
             for field_name in field_names:
                 section_name = '.'.join((self._name.replace('.', '_'), referential.name))

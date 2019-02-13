@@ -28,15 +28,15 @@ class email_domain(email_exact):
     Beware of match_first here, this is most likely to get it wrong (gmail)'''
     name = 'Domain of email address'
 
-    def search_matches(self, cr, uid, conf, mail_message, mail_message_org):
+    def search_matches(self,  conf, mail_message, mail_message_org):
         ids = super(email_domain, self).search_matches(
-            cr, uid, conf, mail_message, mail_message_org)
+             conf, mail_message, mail_message_org)
         if not ids:
             domains = []
             for addr in self._get_mailaddresses(conf, mail_message):
                 domains.append(addr.split('@')[-1])
             ids = conf.pool.get(conf.model_id.model).search(
-                cr, uid,
+
                 self._get_mailaddress_search_domain(
                     conf, mail_message,
                     operator='like',

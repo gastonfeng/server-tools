@@ -31,12 +31,12 @@ class base(object):
     readonly_fields = []
     '''Fields on fetchmail_server folder readonly for this algorithm'''
 
-    def search_matches(self, cr, uid, conf, mail_message, mail_message_org):
+    def search_matches(self,  conf, mail_message, mail_message_org):
         '''Returns ids found for model with mail_message'''
         return []
 
     def handle_match(
-            self, cr, uid, connection, object_id, folder,
+            self,  connection, object_id, folder,
             mail_message, mail_message_org, msgid, context=None):
         '''Do whatever it takes to handle a match'''
         return folder.server_id.attach_mail(connection, object_id, folder,

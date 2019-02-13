@@ -43,22 +43,22 @@ class fetchmail_server(models.Model):
     }
 
     def onchange_server_type(
-            self, cr, uid, ids, server_type=False, ssl=False,
+            self,  ids, server_type=False, ssl=False,
             object_id=False):
         retval = super(
-            fetchmail_server, self).onchange_server_type(cr, uid,
+            fetchmail_server, self).onchange_server_type(
                                                          ids, server_type, ssl,
                                                          object_id)
         retval['value']['state'] = 'draft'
         return retval
 
-    def fetch_mail(self, cr, uid, ids, context=None):
+    def fetch_mail(self,  ids, context=None):
         if context is None:
             context = {}
 
         check_original = []
 
-        for this in self.browse(cr, uid, ids, context):
+        for this in self.browse( ids, context):
             if this.object_id:
                 check_original.append(this.id)
 
@@ -74,7 +74,7 @@ class fetchmail_server(models.Model):
             connection.close()
 
         return super(fetchmail_server, self).fetch_mail(
-            cr, uid, check_original, context)
+             check_original, context)
 
     @api.multi
     def handle_folder(self, connection, folder):
@@ -210,11 +210,11 @@ class fetchmail_server(models.Model):
                 connection.store(msgid, '+FLAGS', '\\DELETED')
         return mail_message_ids
 
-    def button_confirm_login(self, cr, uid, ids, context=None):
+    def button_confirm_login(self,  ids, context=None):
         retval = super(fetchmail_server, self).button_confirm_login(
-            cr, uid, ids, context)
+             ids, context)
 
-        for this in self.browse(cr, uid, ids, context):
+        for this in self.browse( ids, context):
             this.write({'state': 'draft'})
             connection = this.connect()
             connection.select()

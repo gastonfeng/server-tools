@@ -50,8 +50,8 @@ class email_exact(base):
             safe_eval(conf.domain or '[]'))
         return search_domain
 
-    def search_matches(self, cr, uid, conf, mail_message, mail_message_org):
+    def search_matches(self,  conf, mail_message, mail_message_org):
         conf_model = conf.pool.get(conf.model_id.model)
         search_domain = self._get_mailaddress_search_domain(conf, mail_message)
         return conf_model.search(
-            cr, uid, search_domain, order=conf.model_order)
+             search_domain, order=conf.model_order)

@@ -26,7 +26,7 @@ from openerp.addons.email_template.email_template import mako_template_env
 class email_template(Model):
     _inherit = 'email.template'
 
-    def _get_is_template_template(self, cr, uid, ids, fields_name, arg,
+    def _get_is_template_template(self,  ids, fields_name, arg,
                                   context=None):
         cr.execute('''select
                 id, (select count(*) > 0 from email_template e
@@ -42,10 +42,10 @@ class email_template(Model):
             string='Is a template template'),
         }
 
-    def get_email_template(self, cr, uid, template_id=False, record_id=None,
+    def get_email_template(self,  template_id=False, record_id=None,
                            context=None):
         this = super(email_template, self).get_email_template(
-            cr, uid, template_id, record_id, context)
+             template_id, record_id, context)
 
         if this.email_template_id and not this.is_template_template:
             for field in ['body_html']:
@@ -53,7 +53,7 @@ class email_template(Model):
                     try:
                         mako_template_env.autoescape = False
                         this._data[this.id][field] = self.render_template(
-                            cr, uid, this.email_template_id[field],
+                             this.email_template_id[field],
                             this.email_template_id.model,
                             this.id, this._context)
                     finally:

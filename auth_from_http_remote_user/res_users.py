@@ -34,14 +34,14 @@ class res_users(orm.Model):
                                readonly=True),
     }
 
-    def copy(self, cr, uid, rid, defaults=None, context=None):
+    def copy(self,  rid, defaults=None, context=None):
         defaults = defaults or {}
         defaults['sso_key'] = False
-        return super(res_users, self).copy(cr, uid, rid, defaults, context)
+        return super(res_users, self).copy( rid, defaults, context)
 
-    def check_credentials(self, cr, uid, password):
+    def check_credentials(self,  password):
         try:
-            return super(res_users, self).check_credentials(cr, uid, password)
+            return super(res_users, self).check_credentials( password)
         except openerp.exceptions.AccessDenied:
             res = self.search(cr, SUPERUSER_ID, [('id', '=', uid),
                                                  ('sso_key', '=', password)])
