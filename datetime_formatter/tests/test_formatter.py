@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import datetime
 from random import random
+
 from odoo.tests.common import TransactionCase
 from odoo.tools import (DEFAULT_SERVER_DATE_FORMAT,
                         DEFAULT_SERVER_TIME_FORMAT,

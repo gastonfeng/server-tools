@@ -2,9 +2,11 @@
 # Copyright 2016 Tecnativa - Vicent Cubells
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-import re
 import logging
+import re
+
 from lxml import etree, html
+
 from odoo import api, models
 
 _logger = logging.getLogger(__name__)

@@ -1,8 +1,8 @@
 # Copyright 2015-2016 Yannick Vaucher (Camptocamp SA)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import logging
-
 from datetime import datetime
+
 from dateutil.relativedelta import relativedelta
 
 from odoo import _, api, exceptions, fields, models

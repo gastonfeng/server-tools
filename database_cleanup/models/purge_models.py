@@ -2,8 +2,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 # pylint: disable=consider-merging-classes-inherited
 from odoo import _, api, models, fields
-from odoo.exceptions import UserError
 from odoo.addons.base.ir.ir_model import MODULE_UNINSTALL_FLAG
+from odoo.exceptions import UserError
 
 
 class IrModel(models.Model):

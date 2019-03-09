@@ -1,8 +1,8 @@
 # Copyright 2016-2017 Jairo Llopis <jairo.llopis@tecnativa.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo.tools import mute_logger
 from odoo.tests.common import TransactionCase
+from odoo.tools import mute_logger
 
 
 class ExtractorCase(TransactionCase):

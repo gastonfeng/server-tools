@@ -1,6 +1,7 @@
 # Copyright 2015 Guewen Baconnier (Camptocamp SA)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from datetime import datetime, timedelta
+
 import odoo.tests.common as common
 from odoo.exceptions import ValidationError
 

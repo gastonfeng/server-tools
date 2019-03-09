@@ -3,6 +3,7 @@
 # © 2018 Ignacio Ibeas <ignacio@acysos.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import os
+
 from odoo import http
 from odoo.http import request
 from ..models.letsencrypt import get_challenge_dir

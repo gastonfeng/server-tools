@@ -5,6 +5,7 @@
 
 import logging
 import re
+
 from odoo import http
 from odoo.tools import config
 

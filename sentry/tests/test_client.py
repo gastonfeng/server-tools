@@ -8,7 +8,6 @@ import unittest
 import raven
 
 from odoo import exceptions
-
 from .. import initialize_raven
 from ..logutils import OdooSentryHandler
 

@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from threading import current_thread
+
 from odoo import api, models, SUPERUSER_ID
 from odoo.service import wsgi_server
 

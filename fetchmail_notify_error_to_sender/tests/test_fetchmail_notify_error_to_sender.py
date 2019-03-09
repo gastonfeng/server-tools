@@ -2,8 +2,10 @@
 
 
 import socket
+
 from odoo.addons.mail.tests.common import TestMail
 from odoo.addons.mail.tests.test_mail_gateway import MAIL_TEMPLATE
+
 from odoo.tools import mute_logger
 
 
