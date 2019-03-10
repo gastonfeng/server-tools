@@ -1,13 +1,15 @@
 # Copyright 2016-2017 Versada <https://versada.eu/>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-import collections
 import logging
 
 from odoo.service import wsgi_server
 from odoo.tools import config as odoo_config
+
 from . import const
 from .logutils import LoggerNameFilter, OdooSentryHandler
+
+import collections
 
 _logger = logging.getLogger(__name__)
 HAS_RAVEN = True
