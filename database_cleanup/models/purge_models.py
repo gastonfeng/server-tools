@@ -1,9 +1,11 @@
 # Copyright 2014-2016 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 # pylint: disable=consider-merging-classes-inherited
+import traceback
+
 from odoo import _, api, models, fields
-from odoo.exceptions import UserError
 from odoo.addons.base.ir.ir_model import MODULE_UNINSTALL_FLAG
+from odoo.exceptions import UserError
 
 
 class IrModel(models.Model):
@@ -75,22 +77,23 @@ class CleanupPurgeLineModel(models.TransientModel):
             ]).unlink()
             relations = self.env['ir.model.fields'].search([
                 ('relation', '=', row[1]),
-            ]).with_context(**context_flags)
+            ])
             for relation in relations:
                 try:
                     # Fails if the model on the target side
                     # cannot be instantiated
-                    relation.unlink()
-                except KeyError:
-                    pass
-                except AttributeError:
-                    pass
+                    relation.with_context(**context_flags).unlink()
+                except Exception as ex:
+                    self.logger.error(traceback.format_exc())
             self.env['ir.model.relation'].search([
                 ('model', '=', line.name)
             ]).with_context(**context_flags).unlink()
-            self.env['ir.model'].browse([row[0]])\
-                .with_context(**context_flags).unlink()
-            line.write({'purged': True})
+            m = self.env['ir.model'].browse([row[0]])
+            try:
+                m.with_context(**context_flags).unlink()
+                line.write({'purged': True})
+            except Exception as ex:
+                self.logger.error(traceback.format_exc())
         return True
 
 

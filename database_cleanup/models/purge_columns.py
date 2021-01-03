@@ -44,13 +44,16 @@ class CleanupPurgeLineColumn(models.TransientModel):
             self.logger.info(
                 'Dropping column %s from table %s',
                 line.name, model_pool._table)
-            self.env.cr.execute(
-                'ALTER TABLE %s DROP COLUMN %s',
-                (
-                    IdentifierAdapter(model_pool._table),
-                    IdentifierAdapter(line.name)
-                ))
-            line.write({'purged': True})
+            try:
+                self.env.cr.execute(
+                    'ALTER TABLE %s DROP COLUMN %s',
+                    (
+                        IdentifierAdapter(model_pool._table),
+                        IdentifierAdapter(line.name)
+                    ))
+                line.write({'purged': True})
+            except Exception as ex:
+                self.logger.error(str(ex))
             # we need this commit because the ORM will deadlock if
             # we still have a pending transaction
             self.env.cr.commit()  # pylint: disable=invalid-commit
