@@ -3,11 +3,11 @@
 # Mourad EL HADJ MIMOUNE <mourad.elhadj.mimoune@akretion.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+import logging
 import time
 from functools import wraps
-from odoo import api, fields, models, _
-import logging
 
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.safe_eval import safe_eval
 

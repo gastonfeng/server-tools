@@ -1,10 +1,11 @@
 # Copyright 2016 Akretion Mourad EL HADJ MIMOUNE
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+import logging
+
 from odoo.tests import common
 from .common import setup_test_model
 from .purchase_test import PurchaseTest, LineTest
-import logging
 
 _logger = logging.getLogger(__name__)
 

@@ -7,7 +7,6 @@ import logging
 from odoo import _, api, models
 from odoo.osv import expression
 
-
 _logger = logging.getLogger(__name__)
 
 

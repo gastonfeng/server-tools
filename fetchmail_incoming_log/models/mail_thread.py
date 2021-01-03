@@ -3,8 +3,9 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 import email
-import xmlrpc.client as xmlrpclib
 import logging
+import xmlrpc.client as xmlrpclib
+
 from odoo import api, models
 from odoo.tools import pycompat
 

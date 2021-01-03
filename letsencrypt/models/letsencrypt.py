@@ -2,15 +2,15 @@
 # © 2016 Antonio Espinosa <antonio.espinosa@tecnativa.com>
 # © 2018 Ignacio Ibeas <ignacio@acysos.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-import os
 import logging
-import urllib.request
-import urllib.parse
+import os
 import subprocess
 import tempfile
+import urllib.parse
+import urllib.request
+
 from odoo import _, api, models, exceptions
 from odoo.tools import config
-
 
 DEFAULT_KEY_LENGTH = 4096
 _logger = logging.getLogger(__name__)

@@ -2,6 +2,7 @@
 # Copyright 2018 Tecnativa - Sergio Teruel
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 from lxml import etree
+
 from odoo import api, models, tools
 from odoo.tools.safe_eval import safe_eval
 

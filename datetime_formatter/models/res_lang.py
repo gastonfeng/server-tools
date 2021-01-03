@@ -2,10 +2,11 @@
 # Copyright 2016 Tecnativa, S.L. - Vicent Cubells
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from datetime import datetime, timedelta
+
 from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 from odoo.tools import (DEFAULT_SERVER_DATE_FORMAT,
                         DEFAULT_SERVER_TIME_FORMAT)
-from odoo.exceptions import UserError
 
 # Available modes for :param:`.ResLang.datetime_formatter.template`
 MODE_DATETIME = "MODE_DATETIME"

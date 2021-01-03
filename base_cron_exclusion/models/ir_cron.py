@@ -4,8 +4,8 @@
 
 import logging
 
-from odoo import sql_db
 from odoo import api, fields, models, _
+from odoo import sql_db
 from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)

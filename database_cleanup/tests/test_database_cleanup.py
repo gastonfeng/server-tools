@@ -1,9 +1,10 @@
 # Copyright 2016 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from psycopg2 import ProgrammingError
+
 from odoo.modules.registry import Registry
-from odoo.tools import config, mute_logger
 from odoo.tests.common import TransactionCase, at_install, post_install
+from odoo.tools import config, mute_logger
 
 
 # Use post_install to get all models loaded more info: odoo/odoo#13458

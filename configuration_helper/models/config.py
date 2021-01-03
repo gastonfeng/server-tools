@@ -2,9 +2,9 @@
 # © 2016 Yannick Vaucher (Camptocamp SA)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 import re
+from inspect import getmembers
 
 from odoo import api, fields, models
-from inspect import getmembers
 
 
 class AbstractConfigSettings(models.AbstractModel):

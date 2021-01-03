@@ -2,15 +2,16 @@
 # (Copyright) 2018 Creu Blanca
 #  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-import psutil
+import logging
 import os
 import shlex
 import subprocess
-import logging
+
+import psutil
 
 from odoo import api, fields, models, _
-from odoo.tools import config
 from odoo.exceptions import UserError
+from odoo.tools import config
 
 
 def is_exe(fpath):

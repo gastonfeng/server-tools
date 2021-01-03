@@ -3,6 +3,7 @@
 # pylint: disable=consider-merging-classes-inherited
 
 import logging
+
 from odoo import _, api, fields, models
 from odoo.exceptions import AccessDenied
 
